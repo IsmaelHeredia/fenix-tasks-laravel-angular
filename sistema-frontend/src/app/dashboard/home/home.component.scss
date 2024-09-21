@@ -1,0 +1,63 @@
+.titulo1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.titulo2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.graficoEspacio1 {
+    display: block;
+    width: 70vh;
+    height: 35vh;
+}
+
+.graficoEspacio2 {
+    display: block;
+    width: 70vh;
+    height: 35vh;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.column-chart1 {
+    text-align: center;
+}
+
+.column-chart2 {
+    text-align: center;
+}
+
+.column-list1 {
+    text-align: center;
+}
+
+.column-list2 {
+    text-align: center;
+}
+
+.tabla1 {
+    width: 74vh;
+    height: 40vh;
+}
+
+.tabla2 {
+    width: 74vh;
+    height: 40vh;
+}

@@ -1,0 +1,23 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.column-buttons {
+    text-align: center;
+}
+
+.column-title {
+    margin-top: 15px;
+    margin-left: 30px;
+    text-align: center;
+}

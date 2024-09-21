@@ -1,0 +1,60 @@
+<mat-card appearance="outlined" class="center-div espacio-card">
+    <mat-card-title>Complete los datos</mat-card-title>
+    <mat-card-content>
+
+        <form [formGroup]="taskForm" (ngSubmit)="submitForm()">
+
+            <div>
+                <mat-form-field>
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="Nombre" formControlName="nombre" required>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field style="min-height: 200px">
+                    <mat-label>Descripción</mat-label>
+                    <textarea matInput rows="5" cols="40" placeholder="Descripción"
+                        formControlName="descripcion"></textarea>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <mat-label>Fecha de inicio</mat-label>
+                    <input matInput [matDatepicker]="pickerFechaInicio" formControlName="fecha_inicio">
+                    <mat-datepicker-toggle matIconSuffix [for]="pickerFechaInicio"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFechaInicio></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <mat-label>Fecha de finalización</mat-label>
+                    <input matInput [matDatepicker]="pickerFechaFinalizada" formControlName="fecha_finalizada">
+                    <mat-datepicker-toggle matIconSuffix [for]="pickerFechaFinalizada"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFechaFinalizada></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <mat-label>Estado</mat-label>
+                    <mat-select formControlName="id_estado">
+                        @for (estado of estados; track estado) {
+                        <mat-option [value]="estado.id">{{estado.nombre}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="button center-div">
+                <button type="button" class="button-back" mat-flat-button (click)="returnBack()"><mat-icon>arrow_back</mat-icon>
+                    Volver</button>
+                <button type="submit" mat-flat-button><mat-icon>save</mat-icon>Guardar</button>
+            </div>
+
+        </form>
+
+    </mat-card-content>
+</mat-card>

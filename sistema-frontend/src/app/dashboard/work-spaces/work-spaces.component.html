@@ -1,0 +1,81 @@
+<div class="contenedor">
+
+    <button class="button-new margin-button-new" routerLink="/dashboard/espacios/nuevo" mat-fab>
+        <mat-icon>add</mat-icon>
+    </button>
+
+    <mat-divider class="divider-espacio"></mat-divider>
+
+    <form [formGroup]="filterForm" (ngSubmit)="filterSpaces()">
+        <div class="center-div">
+            <mat-form-field class="spaces-filter">
+                <mat-label>Ingrese nombre</mat-label>
+                <input matInput placeholder="Nombre" formControlName="buscarNombre" />
+            </mat-form-field>
+            <button class="button-filter" type="submit" mat-flat-button><mat-icon>search</mat-icon> Filtrar</button>
+            <button class="button-filter" type="button" mat-flat-button
+                (click)="clearFilter()"><mat-icon>close</mat-icon> Borrar</button>
+        </div>
+    </form>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="workSpaces" class="mat-elevation-z8" style="width: 100%;">
+
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                <td mat-cell *matCellDef="let space"> {{space.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tareas">
+                <th mat-header-cell *matHeaderCellDef>Tareas</th>
+                <td mat-cell *matCellDef="let space"> {{space.cantidad_tareas}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fecha_inicio">
+                <th mat-header-cell *matHeaderCellDef>Fecha inicio</th>
+                <td mat-cell *matCellDef="let space"> {{space.fecha_inicio ? space.fecha_inicio : "Sin asignar"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fecha_finalizado">
+                <th mat-header-cell *matHeaderCellDef>Fecha finalizado</th>
+                <td mat-cell *matCellDef="let space"> {{space.fecha_finalizado ? space.fecha_finalizado : "Sin asignar"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef>Estado</th>
+                <td mat-cell *matCellDef="let space">
+                    <b *ngIf="space.id_estado == 1" class="red">{{space.nombre_estado}}</b>
+                    <b *ngIf="space.id_estado == 2" class="orange">{{space.nombre_estado}}</b>
+                    <b *ngIf="space.id_estado == 3" class="green">{{space.nombre_estado}}</b>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dias">
+                <th mat-header-cell *matHeaderCellDef>Días</th>
+                <td mat-cell *matCellDef="let space"> {{space.dias }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="opcion">
+                <th mat-header-cell *matHeaderCellDef class="opcion-table">Opción</th>
+                <td mat-cell *matCellDef="let space">
+                    <button class="button-icon-table" routerLink="/dashboard/espacios/{{space.id}}/tareas" mat-fab>
+                        <mat-icon>task</mat-icon>
+                    </button>
+                    <button class="button-icon-table" routerLink="/dashboard/espacios/{{space.id}}/editar" mat-fab>
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button class="button-icon-table" (click)="openDialogConfirmDelete(space.id,space.nombre)" mat-fab>
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator showFirstLastButtons [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="pageSize"
+            aria-label="Select page of periodic elements" (page)="changePage($event)" [length]="total"
+            [pageIndex]="pageIndex">
+        </mat-paginator>
+    </div>
+</div>

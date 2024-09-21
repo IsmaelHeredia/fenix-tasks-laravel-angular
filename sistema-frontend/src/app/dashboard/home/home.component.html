@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="column column-chart1">
+        <mat-card appearance="outlined">
+            <mat-card-title class="titulo1">Espacios con mayor productividad</mat-card-title>
+            <mat-card-content>
+
+                <div class="graficoEspacio1">
+                    <canvas id="chart1" baseChart [data]="pieChartDataEspacio1" [type]="pieChartTypeEspacio1"
+                        [options]="pieChartOptionsEspacio1">
+                    </canvas>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="column column-chart2">
+        <mat-card appearance="outlined">
+            <mat-card-title class="titulo2">Espacios con menor productividad</mat-card-title>
+            <mat-card-content>
+
+                <div class="graficoEspacio2">
+                    <canvas id="chart2" baseChart [data]="pieChartDataEspacio2" [type]="pieChartTypeEspacio2"
+                        [options]="pieChartOptionsEspacio2">
+                    </canvas>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="column column-list1 tabla1">
+        <mat-card appearance="outlined">
+            <mat-card-title class="titulo2">Tareas con mayor tiempo</mat-card-title>
+            <mat-card-content>
+                <table mat-table [dataSource]="lista1" class="mat-elevation-z8">
+                    <ng-container matColumnDef="nombre">
+                        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                        <td mat-cell *matCellDef="let element">{{element.nombre}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="tiempo">
+                        <th mat-header-cell *matHeaderCellDef>Tiempo</th>
+                        <td mat-cell *matCellDef="let element">{{element.tiempo}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="column column-list2 tabla2">
+        <mat-card appearance="outlined">
+            <mat-card-title class="titulo2">Tareas con menor tiempo</mat-card-title>
+            <mat-card-content>
+                <table mat-table [dataSource]="lista2" class="mat-elevation-z8">
+                    <ng-container matColumnDef="nombre">
+                        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                        <td mat-cell *matCellDef="let element">{{element.nombre}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="tiempo">
+                        <th mat-header-cell *matHeaderCellDef>Tiempo</th>
+                        <td mat-cell *matCellDef="let element">{{element.tiempo}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

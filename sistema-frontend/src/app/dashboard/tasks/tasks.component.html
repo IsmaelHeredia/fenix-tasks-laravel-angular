@@ -1,0 +1,31 @@
+<div class="contenedor">
+
+    <button class="button-new margin-button-new" routerLink="/dashboard/espacios/{{id_espacio}}/tareas/nuevo" mat-fab>
+        <mat-icon>add</mat-icon>
+    </button>
+
+    <h3 class="titulo_espacio">{{ nombre_espacio }}</h3>
+
+    <mat-divider class="divider-espacio"></mat-divider>
+
+    <form [formGroup]="filterForm" (ngSubmit)="filterSpaces()">
+        <div class="center-div">
+            <mat-form-field class="spaces-filter">
+                <mat-label>Ingrese nombre</mat-label>
+                <input matInput placeholder="Nombre" formControlName="buscarNombre" />
+            </mat-form-field>
+            <button class="button-filter" type="submit" mat-flat-button><mat-icon>search</mat-icon> Filtrar</button>
+            <button class="button-filter" type="button" mat-flat-button
+                (click)="clearFilter()"><mat-icon>close</mat-icon> Borrar</button>
+        </div>
+    </form>
+
+    <h5 *ngIf="tasks.length == 0" class="mensaje-no-encontrado">No se encontraron tareas</h5>
+
+    <div class="mat-elevation-z8 scrollbar-tasks">
+        @for (task of tasks; track task;) {
+        <app-task key="task.id" [id_espacio]="id_espacio" [task]="task"></app-task>
+        <mat-divider></mat-divider>
+        }
+    </div>
+</div>

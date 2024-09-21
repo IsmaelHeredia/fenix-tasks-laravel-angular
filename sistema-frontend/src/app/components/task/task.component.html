@@ -1,0 +1,21 @@
+<div key="task.id" id="task.id" class="container" [ngClass]="taskSelected ? 'is-selected' : 'normal'">
+  <div class="buttons-timer">
+    <button class="button-timer" (click)="clickTimer(task.id)" mat-fab>
+      <mat-icon class="icon-2x">{{taskSelected ? 'stop_circle' : 'play_circle'}}</mat-icon>
+    </button>
+    <button class="button-timer" routerLink="/dashboard/espacios/{{id_espacio}}/tareas/{{task.id}}/editar" mat-fab>
+      <mat-icon class="icon-2x">edit</mat-icon>
+    </button>
+    <button class="button-timer" (click)="openDialogConfirmDelete(task.id,task.nombre)" mat-fab>
+      <mat-icon class="icon-2x">delete</mat-icon>
+    </button>
+  </div>
+  <div class="tarea-nombre">
+    {{task.nombre}}
+  </div>
+  <div class="timer">
+    <p *ngIf="task.id_estado == 1" class="timer red">{{tiempo_total}}</p>
+    <p *ngIf="task.id_estado == 2" class="timer orange">{{tiempo_total}}</p>
+    <p *ngIf="task.id_estado == 3" class="timer green">{{tiempo_total}}</p>
+  </div>
+</div>

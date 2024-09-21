@@ -1,0 +1,165 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "@angular/material/prebuilt-themes/rose-red.css";
+
+@import "../../../node_modules/angular-calendar/css/angular-calendar.css";
+
+@import 'ngx-toastr/toastr';
+
+.toast-bottom-center.toast-container {
+    margin-bottom: 20px;
+}
+
+.cal-month-view .cal-days {
+    background-color: transparent !important;
+    color: #ba005c !important;
+
+    :hover {
+        background-color: transparent !important;
+        color: #ba005c !important;
+    }
+}
+
+.cal-cell-row {
+    background-color: transparent !important;
+    color: #ba005c !important;
+
+    :hover {
+        background-color: transparent !important;
+        color: #ba005c !important;
+    }
+}
+
+.cal-day-cell.cal-today {
+    background-color: transparent !important;
+    color: #ba005c !important;
+}
+
+.cal-cell-top.ng-star-inserted {
+    border-color: #ba005c !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    background-color: transparent !important;
+    color: #ba005c !important;
+}
+
+.cal-day-number {
+    color: #ba005c !important;
+}
+
+.cal-tooltip {
+    font-size: 15px !important;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    font-weight: 500 !important;
+}
+
+.center-div {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.icon-item {
+    -webkit-text-fill-color: #ba005c;
+}
+
+.title-menu {
+    background-color: #FFD7E1 !important;
+}
+
+.button-icon-table {
+    color: #FFD7E1 !important;
+    background-color: #ba005c !important;
+    height: 35px !important;
+    margin-top: 5px !important;
+    margin-right: 5px !important;
+}
+
+.button-timer {
+    color: #FFD7E1 !important;
+    background-color: #ba005c !important;
+    width: 60px !important;
+    height: 60px !important;
+    margin-right: 10px !important;
+}
+
+.button-new {
+    color: #FFD7E1 !important;
+    background-color: #ba005c !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 10px !important;
+}
+
+.button-theme {
+    color: #FFD7E1 !important;
+    background-color: #ba005c !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 10px !important;
+    position: absolute;
+    right: 0;
+}
+
+.icon-2x {
+    transform: scale(2);
+}
+
+.icon-3x {
+    transform: scale(3);
+}
+
+.is-active {
+    background-color: #F4D0E0 !important;
+}
+
+mat-progress-bar.mat-mdc-progress-bar {
+    --mdc-linear-progress-active-indicator-color: #ffabf3;
+    --mdc-linear-progress-track-color: #FFD7E1;
+    --mdc-linear-progress-active-indicator-height: 12px;
+    --mdc-linear-progress-track-height: 12px;
+}
+
+.imagen {
+    height: 100px;
+    width: 100px;
+}
+
+.button-back {
+    margin-right: 10px;
+}
+
+.red {
+    color: #cc241d;
+}
+
+.green {
+    color: #98971a;
+}
+
+.orange {
+    color: #d79921;
+}
+
+.is-selected {
+    background-color: #F4D0E0;
+    margin: 0.5 1.5em 0.5em 0.5em;
+    padding: 1em 0;
+}
+
+.modal-text {
+    text-align: center;
+    font-size: 23px !important;
+}
+
+.modal-title {
+    text-align: center;
+    font-size: 40px !important;
+}

@@ -1,0 +1,66 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.first-column {
+    width: 30vw;
+    text-align: center;
+}
+
+.second-column {
+    width: 30vw;
+}
+
+.espacio-card {
+    margin-top: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+mat-form-field {
+    width: 30vw;
+    margin-bottom: 10px;
+}
+
+.steps-button {
+    margin-right: 10px;
+}
+
+.title-confirm {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.file-input {
+    display: none;
+}
+
+.form-upload {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.uploader-button {
+    margin-left: 15px;
+}
+
+.upload-style {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.seleccion-imagenes {
+    margin-top: 100px !important;
+}

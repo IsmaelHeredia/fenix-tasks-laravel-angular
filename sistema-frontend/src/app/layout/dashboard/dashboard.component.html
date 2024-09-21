@@ -1,0 +1,34 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item routerLink="/dashboard/home" [routerLinkActive]="['is-active']"><mat-icon class="icon-item"
+          matListItemIcon>home</mat-icon> Inicio</mat-list-item>
+      <mat-list-item routerLink="/dashboard/espacios" [routerLinkActive]="['is-active']"><mat-icon class="icon-item"
+          matListItemIcon>work</mat-icon> Espacios de trabajo</mat-list-item>
+      <mat-list-item routerLink="/dashboard/calendario" [routerLinkActive]="['is-active']"><mat-icon class="icon-item"
+          matListItemIcon>calendar_month</mat-icon> Calendario</mat-list-item>
+      <mat-list-item routerLink="/dashboard/cuenta" [routerLinkActive]="['is-active']"><mat-icon class="icon-item"
+          matListItemIcon>account_circle</mat-icon> Cuenta</mat-list-item>
+      <mat-list-item (click)="about()"><mat-icon class="icon-item" matListItemIcon>info</mat-icon> About</mat-list-item>
+      <mat-list-item (click)="logout()"><mat-icon class="icon-item" matListItemIcon>logout</mat-icon>
+        Salir</mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="title-menu" color="primary">
+      @if (isHandset$ | async) {
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      }
+      <span color="primary">Fenix Tasks</span>
+      <button class="button-theme" mat-fab (click)="clickChangeTheme()">
+        <mat-icon *ngIf="currentTheme==='light'">dark_mode</mat-icon>
+        <mat-icon *ngIf="currentTheme==='dark'">light_mode</mat-icon>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
