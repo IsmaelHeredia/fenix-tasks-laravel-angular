@@ -24,16 +24,19 @@
     margin-right: 10px;
 }
 
-td.mat-cell,
-th.mat-header-cell {
-    text-align: center !important;
-    justify-content: center !important;
-}
-
 .opcion-table {
     padding-left: 50px;
 }
 
 .margin-button-new {
     margin-left: 10px;
+}
+
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.mat-sort-header-container {
+    justify-content: center !important;
 }

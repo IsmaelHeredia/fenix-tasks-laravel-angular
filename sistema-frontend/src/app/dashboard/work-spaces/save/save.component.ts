@@ -87,7 +87,7 @@ export class SaveWorkSpaceComponent {
 
   images: any = [];
   dataSource = this.images;
-  displayedColumns: string[] = ['id', 'nombre', 'opcion'];
+  displayedColumns: string[] = ['nombre', 'opcion'];
 
   uuid: string = uuidv4();
 

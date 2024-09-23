@@ -61,3 +61,12 @@
     width: 74vh;
     height: 40vh;
 }
+
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.mat-sort-header-container {
+    justify-content: center !important;
+}

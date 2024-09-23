@@ -41,8 +41,8 @@ export class HomeComponent {
   lista1: any[] = [];
   lista2: any[] = [];
 
-  displayedColumns1: string[] = ['nombre', 'tiempo'];
-  displayedColumns2: string[] = ['nombre', 'tiempo'];
+  displayedColumns1: string[] = ['espacio', 'tarea', 'tiempo'];
+  displayedColumns2: string[] = ['espacio', 'tarea', 'tiempo'];
   dataSource1 = this.lista1;
   dataSource2 = this.lista2;
 

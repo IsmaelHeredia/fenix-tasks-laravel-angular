@@ -8,23 +8,25 @@
   gap: 1em;
 }
 
-.buttons-timer {
-  justify-self: center;
-}
-
 p {
   margin: 0.2em;
+}
+
+.buttons-timer {
+  justify-self: center;
 }
 
 .tarea-nombre {
   margin-top: 20px;
   font-size: 30px;
+  justify-self: center;
 }
 
 .timer {
   margin-top: 10px;
   font-size: 30px;
   font-weight: bold;
+  justify-self: center;
 }
 
 .normal {

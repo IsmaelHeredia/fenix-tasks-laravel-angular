@@ -64,3 +64,13 @@ mat-form-field {
 .seleccion-imagenes {
     margin-top: 100px !important;
 }
+
+td,
+th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.mat-sort-header-container {
+    justify-content: center !important;
+}

@@ -35,11 +35,15 @@
 
     <div class="column column-list1 tabla1">
         <mat-card appearance="outlined">
-            <mat-card-title class="titulo2">Tareas con mayor tiempo</mat-card-title>
+            <mat-card-title class="titulo2">Tareas con mayor tiempo empleado</mat-card-title>
             <mat-card-content>
                 <table mat-table [dataSource]="lista1" class="mat-elevation-z8">
-                    <ng-container matColumnDef="nombre">
-                        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                    <ng-container matColumnDef="espacio">
+                        <th mat-header-cell *matHeaderCellDef>Espacio</th>
+                        <td mat-cell *matCellDef="let element">{{element.espacio_nombre}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="tarea">
+                        <th mat-header-cell *matHeaderCellDef>Tarea</th>
                         <td mat-cell *matCellDef="let element">{{element.nombre}} </td>
                     </ng-container>
                     <ng-container matColumnDef="tiempo">
@@ -55,11 +59,15 @@
 
     <div class="column column-list2 tabla2">
         <mat-card appearance="outlined">
-            <mat-card-title class="titulo2">Tareas con menor tiempo</mat-card-title>
+            <mat-card-title class="titulo2">Tareas con menor tiempo empleado</mat-card-title>
             <mat-card-content>
                 <table mat-table [dataSource]="lista2" class="mat-elevation-z8">
-                    <ng-container matColumnDef="nombre">
-                        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                    <ng-container matColumnDef="espacio">
+                        <th mat-header-cell *matHeaderCellDef>Espacio</th>
+                        <td mat-cell *matCellDef="let element">{{element.espacio_nombre}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="tarea">
+                        <th mat-header-cell *matHeaderCellDef>Tarea</th>
                         <td mat-cell *matCellDef="let element">{{element.nombre}} </td>
                     </ng-container>
                     <ng-container matColumnDef="tiempo">
