@@ -19,21 +19,37 @@ class ReporteRepository implements ReporteRepositoryInterface
             ->get();
 
         $espacios_menor_tiempo = DB::table('espacios')
-            ->select(DB::raw('id, nombre, DATEDIFF(fecha_finalizado, fecha_inicio) AS dias'))
             ->whereNotNull('fecha_inicio')
             ->whereNotNUll('fecha_finalizado')
+            ->select(DB::raw('id, nombre, IFNULL(DATEDIFF(espacios.fecha_finalizado, espacios.fecha_inicio),0) AS dias'))
             ->orderBy('dias', 'ASC')
             ->take(3)
             ->get();
 
-        $tareas_mayor_tiempo = Tarea::select('id', 'nombre', 'tiempo')
+        $tareas_mayor_tiempo = DB::table('tareas')
+            ->select(DB::raw(
+                'tareas.id,
+                tareas.nombre,
+                tareas.tiempo,
+                espacios.nombre AS espacio_nombre
+                '
+            ))
+            ->join('espacios', 'espacios.id', '=', 'tareas.id_espacio')
             ->orderBy('tiempo', 'DESC')
             ->take(3)
             ->get();
 
-        $tareas_menor_tiempo = Tarea::where('tiempo', '!=', '00:00:00')
-            ->where('tiempo', '!=', '0')
-            ->select('id', 'nombre', 'tiempo')
+        $tareas_menor_tiempo = DB::table('tareas')
+            ->select(DB::raw(
+                'tareas.id,
+                tareas.nombre,
+                tareas.tiempo,
+                espacios.nombre AS espacio_nombre
+                '
+            ))
+            ->join('espacios', 'espacios.id', '=', 'tareas.id_espacio')
+            ->where('tareas.tiempo', '!=', '00:00:00')
+            ->where('tareas.tiempo', '!=', '0')
             ->orderBy('tiempo', 'ASC')
             ->take(3)
             ->get();
