@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { SecurityService } from '../services/auth/security.service';
 import { environment } from '../../environments/environment';
@@ -12,35 +12,53 @@ export class AuthGuard implements CanActivate {
     private router: Router
   ) { }
 
-  canActivate(): boolean {
-    return this.checkAuth();
-  }
+  canActivate(): Promise<boolean> {
+    return new Promise((resolve) => {
 
-  private checkAuth(): boolean {
+      //console.log('running auth guard!');
 
-    let isSessionStorageAvailable = typeof sessionStorage !== 'undefined';
+      let isSessionStorageAvailable = typeof sessionStorage !== 'undefined';
 
-    if (isSessionStorageAvailable) {
-      const token = sessionStorage.getItem(environment.sessionName);
+      if (isSessionStorageAvailable) {
 
-      if (!token) {
-        this.router.navigate(['/ingreso']);
-        return false;
-      }
+        const token = sessionStorage.getItem(environment.sessionName);
 
-      const datos = {
-        token: token
-      };
+        if (!token) {
+          resolve(false);
+          this.router.navigate(['/ingreso']);
+        } else {
 
-      if (this.securityService.validate(datos)) {
-        return true;
+          const datos = {
+            token: token
+          };
+
+          this.securityService.validate(datos).subscribe(
+            {
+              next: (res: any) => {
+                //console.log('res', res);
+                const estado = res.estado;
+                const datos = res.datos;
+                if (estado == '1' && datos != null && datos != '') {
+                  resolve(true);
+                } else {
+                  resolve(false);
+                  this.router.navigate(['/ingreso']);
+                }
+              },
+              error: error => {
+                resolve(false);
+                this.router.navigate(['/ingreso']);
+              }
+            }
+          );
+
+        }
+
       } else {
-        this.router.navigate(['/ingreso']);
-        return false;
+        resolve(false);
       }
-    } else {
-      return false;
-    }
+
+    });
   }
 
 }

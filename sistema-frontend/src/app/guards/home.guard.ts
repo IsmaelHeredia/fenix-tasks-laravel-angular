@@ -12,41 +12,50 @@ export class HomeGuard implements CanActivate {
     private router: Router
   ) { }
 
-  canActivate(): boolean {
-    return this.checkAuth();
-  }
+  canActivate(): Promise<boolean> {
+    return new Promise((resolve) => {
 
-  private checkAuth(): boolean {
+      //console.log('running home guard!');
 
-    let isSessionStorageAvailable = typeof sessionStorage !== 'undefined';
+      let isSessionStorageAvailable = typeof sessionStorage !== 'undefined';
 
-    if (isSessionStorageAvailable) {
+      if (isSessionStorageAvailable) {
 
-      const token = sessionStorage.getItem(environment.sessionName);
+        const token = sessionStorage.getItem(environment.sessionName);
 
-      if (!token) {
-        return true;
-      } else {
-
-        if (token) {
+        if (!token) {
+          resolve(true);
+        } else {
 
           const datos = {
             token: token
           };
 
-          if (this.securityService.validate(datos)) {
-            this.router.navigate(['/dashboard/home']);
-            return false;
-          } else {
-            return true;
-          }
+          this.securityService.validate(datos).subscribe(
+            {
+              next: (res: any) => {
+                //console.log('res', res);
+                const estado = res.estado;
+                const datos = res.datos;
+                if (estado == '1' && datos != null && datos != '') {
+                  resolve(false);
+                  this.router.navigate(['/dashboard/home']);
+                } else {
+                  resolve(true);
+                }
+              },
+              error: error => {
+                resolve(true);
+              }
+            }
+          );
 
-        } else {
-          return true;
         }
+
+      } else {
+        resolve(true);
       }
-    } else {
-      return true;
-    }
+
+    });
   }
 }
